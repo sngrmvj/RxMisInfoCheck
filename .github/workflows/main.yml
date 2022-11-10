@@ -35,7 +35,8 @@ jobs:
       - name: Build the User Interface (React)
         run: |
           ls -a
-          docker build -t ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ github.sha }} -f mdi_frontend/Dockerfile .
+          cd mdi_frontend
+          docker build -t ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ github.sha }} .
           docker push ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ github.sha }}
 
       # Runs a set of commands using the runners shell
