@@ -30,6 +30,7 @@ jobs:
           
       - name: Copy folders
         run: |
+          pwd
           cp mdi_frontend/ mdi_frontend/
           cp mdi_backend/ mdi_backend/
           
