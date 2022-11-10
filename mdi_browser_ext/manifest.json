@@ -1,0 +1,16 @@
+{
+    "name": "RxMisInfoCheck",
+    "version": "1.2.1",
+    "manifest_version": 3,
+    "action":{
+        "default_title": "MisInfoChk",
+        "default_popup": "build/index.html",
+        "default_icon": {
+            "16": "build/mdi.png",
+            "128": "build/mdi.png",
+            "32": "build/mdi.png"
+        } 
+    },
+    "permissions": [],
+    "description": "Browser extension for Rx mis info check"
+}

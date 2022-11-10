@@ -1,0 +1,98 @@
+
+.upper_div_bulk{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.lower_div_bulk{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.button_bulk {
+    border:2px solid #878d96; /* Green */
+    background-color: transparent;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button_bulk:hover{
+    border:2px solid #01b5af; /* Green */
+    background-color: #01b5af;
+    color: white
+}
+
+
+.input_bulk{
+    width: 350px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 15px;
+    border: 2px solid #878d96;
+    border-radius: 5px;
+}
+
+.placeholder_bulk{
+    position: absolute;
+    top: 16px;
+    left: 8px;
+    font-size: 15px;
+    padding: 0px 5px;
+    transition: 0.3s;
+    pointer-events: none;
+    font-weight: bold;
+    color: #a2a9b0;
+}
+
+.input_bulk:focus + label, .input_bulk:not(:placeholder-shown) + label{
+    top: -10px;
+    color: black;
+    background-color: white;
+    border: black;
+}
+
+.card_bulk{
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 0 2px #878d96;
+    border-top: 2px solid #007d79;
+    padding-left: 20px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    width: 450px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+/* .card_display{
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 0 3px #878d96;
+    border-top: 5px solid #007d79;
+    padding-left: 20px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    max-width: 700px;
+    height: 350px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+} */
