@@ -31,6 +31,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Build the User Interface (React)
+        working-directory: ./test-actions
         run: |
           cd ..
           docker build -f mdi_frontend/Dockerfile -t ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ github.sha }} .
