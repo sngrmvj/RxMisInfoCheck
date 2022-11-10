@@ -28,18 +28,13 @@ jobs:
           username: ${{ secrets.AZURE_REPO_USERNAME }}
           password: ${{ secrets.AZURE_REPO_PASSWORD }}
           
-      - name: Copy folders
-        run: |
-          pwd
-          cp mdi_frontend/ mdi_frontend/
-          cp mdi_backend/ mdi_backend/
-          
       # Runs a single command using the runners shell
       - name: Build the User Interface (React)
         working-directory: mdi_frontend
         run: |
           pwd
-          cp mdi_f
+          cd ..
+          pwd
           docker build -t ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ github.sha }} .
           docker push ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ github.sha }}
 
