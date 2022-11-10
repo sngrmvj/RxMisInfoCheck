@@ -33,12 +33,14 @@ jobs:
         
       # Runs a single command using the runners shell
       - name: Build the User Interface (React)
+        working-directory: mdi_frontend
         run: |
           docker build -t ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ github.sha }} -f mdi_frontend/Dockerfile .
           docker push ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ github.sha }}
 
       # Runs a set of commands using the runners shell
       - name: Build the Web server (python)
+        working-directory: mdi_backend
         run: |
           docker build -t ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_webserver:${{ github.sha }} -f mdi_backend/Dockerfile .
           docker push ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_webserver:${{ github.sha }}
