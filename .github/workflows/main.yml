@@ -34,7 +34,7 @@ jobs:
       # Getting the short form of the SHA
       - name: Get the head of github.sha
         id: short_form_github_sha
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $SHORT_GITHUB_SHA
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
         
       # Runs a single command using the runners shell
       - name: Build the User Interface (React)
@@ -68,7 +68,7 @@ jobs:
       # Getting the short form of the SHA
       - name: Get the head of github.sha
         id: short_form_github_sha
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $SHORT_GITHUB_SHA
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
   #     - name: 'Deploy Container App'
   #       uses: Azure/cli@v1    
