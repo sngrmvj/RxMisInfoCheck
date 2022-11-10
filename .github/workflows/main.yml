@@ -22,21 +22,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      # Docker login to ACR
       - uses: azure/docker-login@v1
         with:
           login-server: ${{ secrets.AZURE_SERVER_NAME }}
           username: ${{ secrets.AZURE_REPO_USERNAME }}
           password: ${{ secrets.AZURE_REPO_PASSWORD }}
-          
-          
-      # Runs a single command using the runners shell
-      - name: Build using the docker compose (React)
-        run: |
-          ls
-          cd ..
-          ls
-
-
+        
       # Runs a single command using the runners shell
       - name: Build the User Interface (React)
         working-directory: mdi_frontend
