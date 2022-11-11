@@ -102,7 +102,7 @@ jobs:
             echo "Installing containerapp extension"
             az extension add --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl --yes
             echo "Started Deploying to containerapp (User Interface)"
-            az containerapp update -n medical-information-ui -g gatech_related_apps -i ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ steps.short_form_github_sha.outputs.sha_short }}
+            az containerapp update --name medical-information-ui --resource-group gatech_related_apps --image ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ steps.short_form_github_sha.outputs.sha_short }}
             echo "Deployed to containerapp (User Interface)"
             echo "Started deploying to containerapp (webserver)"
             az containerapp update -n medical-information-backend -g gatech_related_apps -i ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_webserver:${{ steps.short_form_github_sha.outputs.sha_short }}
