@@ -22,7 +22,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@master
       
       # Docker login to ACR
       - uses: azure/docker-login@v1
@@ -55,8 +55,8 @@ jobs:
     needs: build-container-image
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: Azure/cli@v1  
+      - uses: actions/checkout@master
+       
       
       
       # Docker login to ACR
@@ -97,17 +97,19 @@ jobs:
 
 
       - name: 'Deploy Container App'
-        run: |
-          echo "Installing containerapp extension"
-          az extension add --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.4-py2.py3-none-any.whl --yes
-          echo "Displaying the medical-information-backend container app details"
-          az containerapp show -n medical-information-backend -g gatech_related_apps
-          echo "Started Deploying to containerapp (User Interface)"
-          az containerapp update --name medical-information-ui --resource-group gatech_related_apps --image ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ steps.short_form_github_sha.outputs.sha_short }}
-          echo "Deployed to containerapp (User Interface)"
-          echo "Started deploying to containerapp (webserver)"
-          az containerapp update -n medical-information-backend -g gatech_related_apps -i ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_webserver:${{ steps.short_form_github_sha.outputs.sha_short }}
-          echo "Deployed to containerapp (Web server)"
+        uses: Azure/cli@v1 
+        with:
+          inlineScript: |
+            echo "Installing containerapp extension"
+            az extension add --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.4-py2.py3-none-any.whl --yes
+            echo "Displaying the medical-information-backend container app details"
+            az containerapp show -n medical-information-backend -g gatech_related_apps
+            echo "Started Deploying to containerapp (User Interface)"
+            az containerapp update --name medical-information-ui --resource-group gatech_related_apps --image ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ steps.short_form_github_sha.outputs.sha_short }}
+            echo "Deployed to containerapp (User Interface)"
+            echo "Started deploying to containerapp (webserver)"
+            az containerapp update -n medical-information-backend -g gatech_related_apps -i ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_webserver:${{ steps.short_form_github_sha.outputs.sha_short }}
+            echo "Deployed to containerapp (Web server)"
 
 
 
