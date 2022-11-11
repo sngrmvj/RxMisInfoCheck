@@ -65,24 +65,46 @@ jobs:
           username: ${{ secrets.AZURE_REPO_USERNAME }}
           password: ${{ secrets.AZURE_REPO_PASSWORD }}
           
+          
       # Getting the short form of the SHA
       - name: Get the head of github.sha
         id: short_form_github_sha
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+        
+        
+      # Getting the container app extension and azure cli
+      - name: Get the container app extension and azure cli
+        run: |
+          echo "Installing containerapp extension"
+          az extension add --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl --yes
+        
+        
+      # Logging into the azure cli using service priniciple
+      - name: Logging into the azure cli using service priniciple
+        run: |
+          echo "Logging into application"
+          az login --service-principal --username ${{ secrets.AZURE_SERVICE_PRINICIPLE_APPID }} --password ${{ secrets.AZURE_SERVICE_PRINICIPLE }} --tenant ${{ secrets.AZURE_SERVICE_PRINICIPLE_TENANTID }}
+          
+          
+      # Display the container app details
+      - name: Displaying the exisiting container app details
+        run: |
+          echo "Displaying the medical-information-ui container app details"
+          az containerapp show -n medical-information-ui -g gatech_related_apps
+          echo "Displaying the medical-information-backend container app details"
+          az containerapp show -n medical-information-backend -g gatech_related_apps
+
 
       - name: 'Deploy Container App'
         uses: Azure/cli@v1    
         with:
           inlineScript: |
-            echo "Installing containerapp extension"
-            az extension add --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl --yes
-            echo "Logging into applicatio"
-            az login --service-principal --username ${{ secrets.AZURE_SERVICE_PRINICIPLE_APPID }} --password ${{ secrets.AZURE_SERVICE_PRINICIPLE }} --tenant ${{ secrets.AZURE_SERVICE_PRINICIPLE_TENANTID }}
             echo "Started Deploying to containerapp (User Interface)"
-            az containerapp update -n medical-information-ui -g gatech_related_apps -i ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ github.sha }} --registry-login-server ${{ secrets.AZURE_SERVER_NAME }} --registry-username  ${{ secrets.AZURE_REPO_USERNAME }} --registry-password ${{ secrets.AZURE_REPO_PASSWORD }} --debug
+            az containerapp update -n medical-information-ui -g gatech_related_apps -i ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ steps.short_form_github_sha.outputs.sha_short }}
             echo "Deployed to containerapp (User Interface)"
-            echo "Started deploying to containerapp (webserver"
-            az containerapp update -n medical-information-backend -g gatech_related_apps -i ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_webserver:${{ github.sha }} --registry-login-server ${{ secrets.AZURE_SERVER_NAME }} --registry-username  ${{ secrets.AZURE_REPO_USERNAME }} --registry-password ${{ secrets.AZURE_REPO_PASSWORD }} --debug
+            echo "Started deploying to containerapp (webserver)"
+            az containerapp update -n medical-information-backend -g gatech_related_apps -i ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_webserver:${{ steps.short_form_github_sha.outputs.sha_short }}
+            echo "Deployed to containerapp (Web server)"
 
 
 
