@@ -99,6 +99,8 @@ jobs:
         uses: Azure/cli@v1    
         with:
           inlineScript: |
+            echo "Installing containerapp extension"
+            az extension add --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl --yes
             echo "Started Deploying to containerapp (User Interface)"
             az containerapp update -n medical-information-ui -g gatech_related_apps -i ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ steps.short_form_github_sha.outputs.sha_short }}
             echo "Deployed to containerapp (User Interface)"
