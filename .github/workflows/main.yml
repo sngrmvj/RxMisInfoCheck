@@ -76,6 +76,8 @@ jobs:
           inlineScript: |
             echo "Installing containerapp extension"
             az extension add --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl --yes
+            echo "Logging into applicatio"
+            az login --service-principal --username ${{ secrets.AZURE_SERVICE_PRINICIPLE_APPID }} --password ${{ secrets.AZURE_SERVICE_PRINICIPLE }} --tenant ${{ secrets.AZURE_SERVICE_PRINICIPLE_TENANTID }}
             echo "Started Deploying to containerapp (User Interface)"
             az containerapp update -n medical-information-ui -g gatech_related_apps -i ${{ secrets.AZURE_SERVER_NAME }}/medical-drug-information_interface:${{ github.sha }} --registry-login-server ${{ secrets.AZURE_SERVER_NAME }} --registry-username  ${{ secrets.AZURE_REPO_USERNAME }} --registry-password ${{ secrets.AZURE_REPO_PASSWORD }} --debug
             echo "Deployed to containerapp (User Interface)"
