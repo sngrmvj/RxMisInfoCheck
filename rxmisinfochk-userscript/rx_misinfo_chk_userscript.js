@@ -4,7 +4,7 @@
 // @version      1.0
 // @description  We shall use this when ever we come across a medical drug and to understand whether it is a genuine or government approved.
 // @author       You
-// @match        https://www.google.com/*
+// @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @grant        none
 // ==/UserScript==
@@ -83,7 +83,7 @@
 
     const displayBody = document.createElement("div");
     displayBody.id = 'displayBody';
-    displayBody.style.cssText = 'visibility:hidden;flex-direction: column;padding: 20px;width: 300px;height: fit-oontent;display: flex;justify-content: center;border-top-left-radius: 10px;border-top-right-radius: 10px; background-color:#fff'
+    displayBody.style.cssText = 'font-family:Arial;visibility:hidden;flex-direction: column;padding: 20px;width: 300px;height: fit-oontent;display: flex;justify-content: center;border-top-left-radius: 10px;border-top-right-radius: 10px; background-color:#fff;border-left:2px solid #d1d1d1;border-top:2px solid #d1d1d1;border-right:2px solid #d1d1d1'
 
     const userHeader = document.createElement("header");
     userHeader.innerHTML = "Medical Drug search";
@@ -123,7 +123,7 @@
     // "viewDiv" content is in the the submitButton
     const viewDiv = document.createElement("div");
     viewDiv.id = 'viewDiv'
-    viewDiv.style.cssText = 'visibility:hidden;flex-direction: column;padding: 20px;width: 300px;height: fit-oontent;display: flex;justify-content: center;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px; background-color:#fff';
+    viewDiv.style.cssText = 'font-family:Arial;visibility:hidden;flex-direction: column;padding: 20px;width: 300px;height: fit-oontent;display: flex;justify-content: center;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px; background-color:#fff;border-left:2px solid #d1d1d1;border-bottom:2px solid #d1d1d1;border-right:2px solid #d1d1d1';
 
 
     const submitButton = document.createElement("button");

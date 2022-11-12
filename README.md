@@ -25,7 +25,6 @@ A portal to provide the information regarding the medical drug that whether that
 - The other screen is to 
 
 
-### Steps to complete
-- User script deployment
-- Test cases
-- docmentation
+### Links 
+- Wiki 
+  - > https://github.gatech.edu/vsanagaram3/Medical-Drug-Information/wiki/RxMisInfoCheck
