@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "3605e8d4-1299-42e2-a990-ee0fdd5c6826",
+		"name": "RxMisInfoChk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{DockerURL}}",
+					"host": [
+						"{{DockerURL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Medical Drug Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ProductionURL}}/:value?type=brand_name",
+					"host": [
+						"{{ProductionURL}}"
+					],
+					"path": [
+						":value"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "brand_name"
+						}
+					],
+					"variable": [
+						{
+							"key": "value",
+							"value": "Aleve"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk Search",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ndc\" : [],\n    \"brand_name\": [\"Aleve\",\"Prozac\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ProductionURL}}/bulk/",
+					"host": [
+						"{{ProductionURL}}"
+					],
+					"path": [
+						"bulk",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recently Searched",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ProductionURL}}/recentlyUsed",
+					"host": [
+						"{{ProductionURL}}"
+					],
+					"path": [
+						"recentlyUsed"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -148,7 +148,7 @@ const BulkSearch = (props) =>{
                         <br/><br/>
                         <button className='button_bulk' onClick={addToList}>Add</button>
                     </div>
-                    <div className='card_bulk' style={{marginLeft:"0.5px",height:"313px",scroll:"auto"}}>
+                    <div className='card_bulk' style={{marginLeft:"0.5px",height:"316px",scroll:"auto"}}>
                         <div>
                             <header style={{fontSize:"18px",color:"#007d79"}}><b>Added Items</b></header>
                         </div>
