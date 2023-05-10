@@ -26,5 +26,5 @@ A portal to provide the information regarding the medical drug that whether that
 
 
 ### Links 
-- Wiki 
-  - > [Wiki](https://github.com/sngrmvj/RxMisInfoCheck/wiki/RxMisInfoCheck)
+- [Wiki](https://github.com/sngrmvj/RxMisInfoCheck/wiki/RxMisInfoCheck)
+
