@@ -1,8 +1,6 @@
 # Medical-Drug-Information
-A portal to provide the information regarding the medical drug that whether that is legitimate or not
-
-
-
+A portal to provide the information regarding the medical drug that whether that is legitimate or not.
+This application is developed as part of Master of Science in Computer Science (Fall 2022) at Georgia Tech in Intro to health informatics course
 
 ## Medical drug info backend
 - Built on flask
@@ -14,8 +12,6 @@ A portal to provide the information regarding the medical drug that whether that
 - We are using LRU to remove the keys as we opted for the limit of 20 keys in redis database.
   - LRU is done based on timestamp
 
-
-
 ## Medical drug info frontend
 - It has 3 screen
   - We have input box to search for the drug.
@@ -23,7 +19,6 @@ A portal to provide the information regarding the medical drug that whether that
   - Recently searched items gets displayed below the search box.
   - Right side, we see the details of the info we searched for.
 - The other screen is to 
-
 
 ### Links 
 - [Wiki](https://github.com/sngrmvj/RxMisInfoCheck/wiki/RxMisInfoCheck)
