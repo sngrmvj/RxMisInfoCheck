@@ -27,4 +27,4 @@ A portal to provide the information regarding the medical drug that whether that
 
 ### Links 
 - Wiki 
-  - > https://github.gatech.edu/vsanagaram3/Medical-Drug-Information/wiki/RxMisInfoCheck
+  - > [Wiki](https://github.com/sngrmvj/RxMisInfoCheck/wiki/RxMisInfoCheck)
