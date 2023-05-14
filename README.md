@@ -20,6 +20,6 @@ This application is developed as part of Master of Science in Computer Science (
   - Right side, we see the details of the info we searched for.
 - The other screen is to 
 
-### Links 
+#### Links 
 - [Documentation](https://github.com/sngrmvj/RxMisInfoCheck/wiki/RxMisInfoCheck)
 
