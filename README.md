@@ -21,5 +21,5 @@ This application is developed as part of Master of Science in Computer Science (
 - The other screen is to 
 
 ### Links 
-- [Wiki](https://github.com/sngrmvj/RxMisInfoCheck/wiki/RxMisInfoCheck)
+- [Documentation](https://github.com/sngrmvj/RxMisInfoCheck/wiki/RxMisInfoCheck)
 
